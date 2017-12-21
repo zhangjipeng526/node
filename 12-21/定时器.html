@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>定时器</title>
+	<style type="text/css">
+		*{margin: 0;padding: 0;}
+		.wrap{width: 400px;height: 150px;background: lime;margin: 50px auto;}
+		h1{width: 400px;height: 100px;font-size: 80px;text-align: center;}
+		button{border: none;width: 120px;margin: 0 5px;background: pink;outline: none;font-size: 20px;color: white;line-height: 40px}
+	</style>
+</head>
+<body>
+	<div class="wrap">
+		<h1 id="lan"></h1>
+		<button id="jx">继续</button>
+		<button id="zt">暂停</button>
+		<button id="js">结束</button>
+	</div>
+</body>
+<script type="text/javascript">
+var lan = document.getElementById('lan');
+var lanjx = document.getElementById('jx');
+var lanzt = document.getElementById('zt');
+var lanjs = document.getElementById('js');
+var num=10;
+lan.innerHTML="00:00:"+num;
+var	stintv = setInterval(function() {
+		if(num<10){
+			lan.innerHTML="00:00:0"+num
+		}
+        num--;
+       	if(num<0){          
+           	clearInterval(stintv);
+       	}
+    },1000)
+lanzt.onclick=function(){
+	clearInterval(stintv)
+}
+lanjx.onclick=function(){
+	stintv = setInterval(function() {
+		if(num<10){
+			lan.innerHTML="00:00:0"+num
+		}
+        num--;
+       	if(num<0){          
+           	clearInterval(stintv);
+       	}
+    },1000)
+}
+lanjs.onclick=function(){
+	clearInterval(stintv)
+	lan.innerHTML="00:00:00"
+}
+
+</script>
+</html>
